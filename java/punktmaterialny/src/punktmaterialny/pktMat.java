@@ -26,18 +26,18 @@ public class pktMat
 		return this.masa;
 	}
 	
-	public int momBez(){				//klasa obliczająca moment bezwładności
+	public int momBez(){				//metoda obliczająca moment bezwładności
 		int i = 0;
 		return i;
 	}
 
-	public int steiner(int d){			//klasa obliczająca moment bezwładości z twierdzenia Steinera
+	public int steiner(int d){			//metoda obliczająca moment bezwładości z twierdzenia Steinera
 		int is;
 		is = momBez() + this.masa*d*d;
 		return is;
 	}
 
-	public String opis(){					//klasa zwracająca opis
+	public String opis(){					//metoda zwracająca opis
 		return "Punkt materialny";
 	}
 	

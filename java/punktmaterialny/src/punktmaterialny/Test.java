@@ -7,49 +7,79 @@ public class Test {
 	public static void main(String[] args) {
 		
 /* Stage I */
+		Walec walec1 = new Walec(2,2);
+		Kula kula1 = new Kula(2,2);
+		Pret pret1 = new Pret(2,2);
 		
-		pktMat punkt1 = new pktMat();																		// punkt1- domyslny
-		pktMat punkt2 = new pktMat(5);																		// punkt2- parametry
+		//Walec1
+		System.out.println(walec1.opis(true) + " masa: " + walec1.getMasa() );
+		System.out.println(walec1.opis(true) + " moment bezw: " + walec1.getMoment() + "\n" );
+		//Kula1
+		System.out.println(kula1.opis(true) + " masa: " + kula1.getMasa() );
+		System.out.println(kula1.opis(true) + " moment bezw: " + kula1.getMoment() + "\n" );
+		//Pret1
+		System.out.println(pret1.opis(true) + " masa: " + pret1.getMasa() );
+		System.out.println(pret1.opis(true) + " moment bezw: " + pret1.getMoment() + "\n" );
 
-		//punkt1
-		System.out.println( punkt1.opis()+ " 1 masa: " +punkt1.getMasa() );
-		System.out.println( punkt1.opis()+ " 1 moment bezwladnosci: " +punkt1.momBez() );
-		System.out.println( punkt1.opis()+ " 1 moment bezwladnosci wzgledem osi: " +punkt1.steiner(2) ); 	// promien = 2
-		System.out.println();
-		
-		//punkt2
-		System.out.println( punkt2.opis()+ " 2 masa: " +punkt2.getMasa() );
-		System.out.println( punkt2.opis()+ " 2 moment bezwladnosci: " +punkt2.momBez() );
-		System.out.println( punkt2.opis()+ " 2 moment bezwladnosci wzgledem osi: " +punkt2.steiner(5) ); 	// promien = 5
-		System.out.println();
-		
-		punkt1.zmienMase(10);																				// punkt1 zmiana masy = 10
-		
-		//punkt1
-		System.out.println( punkt1.opis()+ " 1 masa: " +punkt1.getMasa() );
-		System.out.println( punkt1.opis()+ " 1 moment bezwladnosci: " +punkt1.momBez() );
-		System.out.println( punkt1.opis()+ " 1 moment bezwladnosci wzgledem osi: " +punkt1.steiner(2) ); 	// promien = 2
-		System.out.println();
-		
 /* Stage II */
+		ArrayList<pktMat> listaBryl = new ArrayList<>();
 		
-		System.out.println();
-		
-		ArrayList<pktMat> listaPunktow = new ArrayList<>();
-		
-		for( int i = 0 ; i < 3 ; i++ ) { 
-			pktMat punkt = new pktMat( i+1 );
-			listaPunktow.add(punkt);
+		for( int i = 1 ; i < 4 ; i++) {
+			if( i % 3 == 0 ) {
+				Walec walec2 = new Walec(i,i);
+				listaBryl.add(walec2);
+			}
+			else if( i % 3 == 1 ) {
+				Kula kula2 = new Kula(i,i);
+				listaBryl.add(kula2);
+			}
+			else if( i % 3 == 2 ) {
+				Pret pret2 = new Pret(i,i);
+				listaBryl.add(pret2);
+			}
+			else {
+				System.out.println("Error in loop 1");
+				break;
+			}
 		}
 		
-		for( int i = 0 ; i < 3 ; i++ ) {
-			System.out.println( listaPunktow.get(i).opis()+ " masa: " +listaPunktow.get(i).getMasa() );
-			System.out.println( listaPunktow.get(i).opis()+ " moment bezwladnosci: " +listaPunktow.get(i).momBez() );
-			System.out.println( listaPunktow.get(i).opis()+ " moment bezwladnosci wzgledem osi: " +listaPunktow.get(i).steiner(2) ); 	// promien = 2
-			System.out.println();
+		for ( pktMat i : listaBryl ) {
+			if( i instanceof Walec) {
+				System.out.println( ( (Walec)i ).opis(true) + " masa: " + i.getMasa() );
+				System.out.println( ( (Walec)i ).opis(true) + " moment bezw: " + ( (Walec)i ).getMoment() + "\n" );
+			}
+			else if( i instanceof Kula) {
+				System.out.println( ( (Kula)i ).opis(true) + " masa: " + i.getMasa() );
+				System.out.println( ( (Kula)i ).opis(true) + " moment bezw: " + ( (Kula)i ).getMoment() + "\n" );
+			}
+			else if( i instanceof Pret) {
+				System.out.println( ( (Pret)i ).opis(true) + " masa: " + i.getMasa() );
+				System.out.println( ( (Pret)i ).opis(true) + " moment bezw: " + ( (Pret)i ).getMoment() + "\n" );
+			}
+			else {
+				System.out.println("Error in loop 2");
+				break;
+			}
+			
 		}
-		
+/* Stage III */
+		for ( pktMat i : listaBryl ) {
+			if( i instanceof Walec) {
+				( (Walec)i ).zmienOs( 2 );
+				System.out.println( ( (Walec)i ).opis(true) + " moment bezw: " + ( (Walec)i ).getMoment() + "\n" );
+			}
+			else if( i instanceof Kula) {
+				( (Kula)i ).zmienOs( 2 );
+				System.out.println( ( (Kula)i ).opis(true) + " moment bezw: " + ( (Kula)i ).getMoment() + "\n" );
+			}
+			else if( i instanceof Pret) {
+				( (Pret)i ).zmienOs( 2 );
+				System.out.println( ( (Pret)i ).opis(true) + " moment bezw: " + ( (Pret)i ).getMoment() + "\n" );
+			}
+			else {
+				System.out.println("Error in loop 3");
+				break;
+			}
+		}
 	}
-	
-
 }
