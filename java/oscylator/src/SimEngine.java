@@ -7,7 +7,7 @@ public class SimEngine {
 	private double x;				//wspolzedna x masy
 	private double v;				//predkosc masy
 	private double x_pktzaw;		//polozenie punktu zawieszenia
-	private static double g = 9.81;		//stala grawitacji
+	private double g = 9.81;		//stala grawitacji
 	private double a;
 	private double time;
 	
@@ -23,7 +23,7 @@ public class SimEngine {
 		this.time = 0;
 	}
 	
-	public SimEngine(double masa, double k, double c, double l, double x, double v, double x_pktzaw) {
+	public SimEngine(double masa, double k, double c, double l, double g, double x, double v, double x_pktzaw) {
 		this.masa = masa;				//masa
 		this.k = k;						//wspolczynnik sprezystosci
 		this.c = c;						//tlumienie
@@ -33,6 +33,11 @@ public class SimEngine {
 		this.x_pktzaw = x_pktzaw;		//polozenie punktu zawieszenia
 		this.a = 0;
 		this.time = 0;
+		this.g = g;
+	}
+	
+	public void set_x( int x ) {
+		this.x = (double) x;
 	}
 	
 	public double get_masa(){
